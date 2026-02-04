@@ -5,12 +5,13 @@
   - [maximilian-schwarzmueller.com](https://maximilian-schwarzmueller.com)
   - [academind.com](https://academind.com)
 
-## What is Angular?
+## Getting Started
+### What is Angular?
 - Platform with 2 things:
   1. **Front-end JavaScript framework** (helps in building interactive, modern web UIs)
   2. Collection of **tools & features** that come with the framework (*CLI, debugging tools, IDE plugins*)
 
-## Why Angular?
+### Why Angular?
 - Frameworks like Angular shine when apps get *complex*
 - Simplify process of building complex, interactive web UIs, reasons:
   1. Can write **declarative code** (compared to **vanilla JS** = **imperative**)
@@ -31,7 +32,7 @@
       - NOT an Angular feature, can be used independently
       - Better code quality &amp; lesser errors
 
-## Angular Evolution &amp; Stability
+### Angular Evolution &amp; Stability
 - Keeps evolving, but *stable* and *backward-compatible*
 - Angular 1 = **AngularJS**, totally different framework
 - Angular = Angular 2+, total rewrite of *AngularJS*
@@ -40,13 +41,13 @@
   - Every version is backward-compatible (MOST Angular 2 code would *still* work today)
   - Companies might still use older versions of Angular, NOT always latest
 
-### Important Angular releases
+#### Important Angular releases
 - Angular 14 - introduced **Standalone Components**
 - Angular 16 - introduced **Signals**
 - Added as *optional features* for backward compatibility
   - Not available with older versions
 
-## Creating an Angular project
+### Creating an Angular project
 - Can't just create an empty folder with HTML and JS files
 - Building an Angular project requires features which don't work in the browser out-of-the-box:
   - Uses **non-standard HTML syntax**
@@ -56,7 +57,7 @@
   - Tool to *simplify* process of creating Angular projects
   - Also used behind-the-scenes by these projects when we run **development testing server** or **build the app for production** to perform compilation and optimizations
 
-### Installing Angular CLI
+#### Installing Angular CLI
 - Needed to create and work on Angular projects
 1. Install [Node.js](https://nodejs.org/en/download) **LTS-version**
     - **JS runtime** which allows running JS *outside the browser*
@@ -77,7 +78,7 @@
       - **Stylesheet format**: CSS
       - **Server-Side Rendering (SSR) enabled**: N
 
-## Setting up a Development Environment
+### Setting up a Development Environment
 1. Install [VS Code](https://code.visualstudio.com)
     - Free and highly extensible IDE
     - Works on all OS
