@@ -63,20 +63,45 @@
     - ***IMP***: This is where Angular comes in (code in `main.ts` is run when website loads up)
     - However, in `index.html` there are no JS imports (`<script>`)
     - But, if we visit the loaded website and click `View Page Source`, we can see the `<script>` tags **injected** automatically by the Angular CLI when we build and run the app
-    - `main.ts` is compiled to JS by Angular CLI and then run (since TS can't run directly in the browser)
+    - `main.ts` is compiled to JS (`main.js`) by Angular CLI and then run (since TS can't run directly in the browser)
 - `main.ts` executes the `bootstrapApplication()` function provided by the Angular package
   - This function wants an Angular component (`AppComponent`)
-  - ***IMP***: It then takes that component and looks for it in the `index.html` and tries to replace the **tag** for that custom component with the markup defined by that component
+  - ***IMP***: It then takes that component and looks for it in the `index.html` and tries to replace the **element tag** for that custom component with the markup defined by that component
     - Currently, it is the `AppComponent` which is coming (**imported**) from `./app/app.component` file
     - If we follow that path, we end up on `app.component.ts`
     - ***IMP***: The `.ts` is missing from the import path since for TS files, we should OMIT the file extension
-- `app.component.ts` has a **class** (*feature of modern JS*, NOT TS-specific) called `AppComponent`
-  - This class in Angular creates such a custom HTML element
+- `app.component.ts` has a **class** (* standard feature of modern JS*, NOT TS-specific) called `AppComponent`
+  - This class in Angular creates such a component/custom HTML element
   - It does that because it's not just a class, it also has an `@Component` **decorator** (*TS feature*) above it which adds **metadata** to what it is attached to (the class)
   - ***IMP***: Angular uses *decorators* to add metadata
 - The `@Component` decorator comes from the `@angular/core` package in the Angular framework
-  - This decorator converts a standard class into an Angular component (treated as a custom HTML element by Angular)
+  - ***IMP***: This decorator converts a standard class into an Angular component (treated as a custom HTML element by Angular)
   - This decorator receives an object (`{}`) with some configuration for the component
     1. `selector` property: tells Angular which **element/tag** it should look at in the HTML code to be replaced by this component and its *markup*
-    2. `templateUrl` property: external file that stores the markup (**template**) of this component, every component has markup
+    2. `templateUrl` property: external file that stores the markup (**template**) of this component, every component has template/markup
     3. `styleUrl` property: path to external file that stores styles **specific** to this component, ONLY apply to this component's markup
+
+## Creating our First Custom Component
+- In the [finished demo app](https://github.com/mschwarzmueller/angular-complete-guide-course-resources/tree/main/attachments/02-essentials):
+  - We can split the page into *multiple UI blocks* or *separate HTML elements*:
+    1. Header
+    2. Sidebar with every tab can be a separate HTML element
+    3. Main area
+    4. "Add Task" dialog
+  - So we have multiple building blocks that make up the overall UI
+  - ***IMP***: When working with Angular, we build those building blocks as individual **components** and then compose them together to get the overall UI
+
+### Building the Header component
+- We already have the `AppComponent` (main component of this app)
+  - This component is made up of **3 files** which work together (standard in Angular, components are created as separate multiple files working together)
+- Add new file for header component: `header.component.ts` (or `header.ts` for Angular 20+)
+  - *REM*: This is ONLY a *recommended convention*, we can name the component anything we want
+  - By convention, name SHOULD start with something that identifies/describes the component (ex: `header`)
+  - Followed by a dot (`.`), followed by what will be stored in the file (a `component` here), followed by the file extension (`.ts`) since we are using TS (builds on top of JS)
+- In `header.component.ts`:
+  1. We need a class since components are just classes enhanced by the `@Component` decorator
+      - ***IMP***: The class MUST be **exported** (`export` keyword) so that it can be used in other files as well
+      - Name of the class by convention will be `HeaderComponent` (starts with identifier followed by the type/what it is)
+      - Followed by `{}` to define **class body** (empty for now)
+  2. To convert this class to a component, we need to import the `Component` decorator from the Angular framework's `core` package
+  3. Add the decorator `@Component` followed by parentheses (`()`)
