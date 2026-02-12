@@ -105,3 +105,23 @@
       - Followed by `{}` to define **class body** (empty for now)
   2. To convert this class to a component, we need to import the `Component` decorator from the Angular framework's `core` package
   3. Add the decorator `@Component` followed by parentheses (`()`)
+
+## Configuring the Custom Component
+- Between the `()`, we pass the configuration for the component:
+  1. `selector` (to select elements, REQUIRED) to tell Angular which elements on the screen will be *replaced* by this component
+      - ***Convention***: Select elements by a tag that consists at least 2 words separated by a `-`, ex: `app-header`
+      - ***Reason***: Using just 1 word could clash with built -in HTML elements (ex: `<header>`)
+        - Using `header` would override the default `header` element in HTML
+      - The **prefix** `app` is just common choice, we could use whatever
+  2. `template` (REQUIRED if not using `templateUrl`) defines **markup**/content which should be displayed by that component
+      - Could be defined in-line as a string by writing the markup in quotes (ex: `'<h1>Hello World</h1>'`)
+      - But, this is NOT recommended, ONLY use for very simple (2-3 lines) HTML code
+      - In general, recommended to use `templateUrl` property to point to an **external HTML file**
+      - `templateUrl` needs to contain a string defining the **relative path** (relative from this TS file) for the file containing markup (HTML) for this component
+      - Create `header.component.html` (convention to use same name as TS file, but change extension to `.html`)
+      - Now relative path will be `./header.component.html` (same folder as TS file)
+  3. Add simple markup in `header.component.html`
+  4. Add `standalone` property: marks the component as a **standalone component** (set to `true`, *recommended*)
+      - ***IMP***: Depending on Angular version, this might be set to `true` *automatically* (Angular 19+), can be omitted in such a case
+      - ***IMP***: For Angular <19, default will be `false` (creates a **module-based component**) which we do NOT want (set to `true` is the modern way of building Angular components)
+      - ***IMP***: Standalone components are EASIER to use and tie together
